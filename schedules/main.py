@@ -3,7 +3,7 @@
 def make_schedule(con, cur):
     import os, sys
     base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    sys.path.append(os.path.join(base_dir, 'schedules'))
+    sys.path.append(base_dir)
 
     from tools import exists
     

@@ -1,9 +1,9 @@
 #pull_data.get_data_profile(con, cur, unique_id) will pull the data like name, phone, mail address
 
 def get_data_profile(cur, unique_id):
-    import exists
+    from tools import exists
     
-    if exists.data_exists(cur, unique_id):
+    if exists.profile_exists(cur, unique_id):
         query = f"select * from profile where SlNo={unique_id}"
         cur.execute(query)
         data = cur.fetchone()
