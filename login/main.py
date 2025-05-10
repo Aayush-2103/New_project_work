@@ -23,7 +23,7 @@ def lets_log_in(cur):
             #log in successfull
             print('Log in successfull.')
             print()
-            return True
+            return True, uid
             
         else:
             print()

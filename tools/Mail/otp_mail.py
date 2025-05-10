@@ -36,7 +36,7 @@ Thank you
     
     msg.set_content(message)
 
-    msg['Subject'] = 'Log inin OTP'
+    msg['Subject'] = 'Log in OTP'
     msg['From'] = sender_mail
     msg['To'] = receiver
 
