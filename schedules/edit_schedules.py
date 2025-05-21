@@ -81,3 +81,4 @@ def make_edits(con, cur, uid):
     else:
         print('Invalid option number.')
         print('Process Terminated !!!')
+        print()

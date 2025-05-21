@@ -9,7 +9,7 @@ def make_schedule(con, cur, uid):
     
     print()
     if exists.profile_exists(cur, uid):
-        task_name = input('Task name:- \t\t\t\t')
+        task_name = input('Task name:- ')
 
         print('Date & time in (yyyy-mm-dd 17:45) format')
         date_time = input()
@@ -31,6 +31,3 @@ def make_schedule(con, cur, uid):
 
         cur.execute(query)
         con.commit()        
-
-    else:
-        print(f'User id:{uid} is not available in database.')

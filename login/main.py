@@ -27,8 +27,9 @@ def lets_log_in(cur):
             
         else:
             print()
-            return False
+            return False, False
 
     else:
         print(f'User id:{uid} is not recognised.') 
-        return False
+        print()
+        return False, False
