@@ -7,20 +7,19 @@ def control():
     sys.path.append(base_dir)
 
     import login.main
-    import schedules.main
-    import schedules.view_schedules
-    import schedules.edit_schedules
+    import schedules.main, schedules.view_schedules, schedules.edit_schedules, create_profile.index_1
     
     #connection object
     con = mysql.connect(
         host = 'localhost',
         user = 'root',
         password = 'tiger',
-        database = 'to_do'
     )
 
     #cursor object
     cur = con.cursor()
+    cur.execute("create database if not exists userpf")
+    cur.execute("Use userpf")
 
     while True:
         print(f'Welcome\n')
@@ -32,7 +31,7 @@ def control():
         option = input('Enter your choice:- ')        
         if option == '1':
             #create profile function call
-            print("Work under progress")
+            create_profile.index_1.create_profile(con, cur)
 
         elif option == '2':
             #login function call

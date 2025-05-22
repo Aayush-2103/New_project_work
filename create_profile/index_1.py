@@ -1,15 +1,10 @@
-import mysql.connector as mycon
 from create_profile.otp_ver import send_otp, validate_otp, resend_otp
 
 
 
 # Function to create a user profile
-def create_profile():
-    con = mycon.connect(host="localhost", user="root", password="tiger", database="userpf")
-    cur = con.cursor()
-
-
-
+def create_profile(con, cur):
+    
     # Name validation
     while True:
         name = input("Enter your name: ").strip()
@@ -84,7 +79,7 @@ def create_profile():
     else:  # If slno exists, increment the maximum slno by 1
         new_slno = count[0] + 1
 
-
+    #insert the system to first create the two tables event and profile.
 
     # Insert the new profile into the database
     insert_query = "insert into profile(slno, name, phone, email_id) values (%s, %s, %s, %s)"
