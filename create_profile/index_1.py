@@ -4,6 +4,29 @@ from create_profile.otp_ver import send_otp, validate_otp, resend_otp
 
 # Function to create a user profile
 def create_profile(con, cur):
+
+
+    #system to create the two tables "profile" and "events":
+    #creating table profile
+    cur.execute('''
+                create table if not exists profile(
+                SLNO int primary key,
+                NAME varchar(48),
+                PHONE char(10) unique,
+                EMAIL_ID varchar(100) unique
+                )''')
+
+    #creating table events
+    cur.execute('''
+                create table if not exists events(
+                SLNO int not null,
+                TASK_NAME varchar(40),
+                DATE_AND_TIME datetime,
+                NOTE varchar(500) default "--",
+                ALERT_TIME time
+                )''')
+
+    con.commit()
     
     # Name validation
     while True:
@@ -79,7 +102,7 @@ def create_profile(con, cur):
     else:  # If slno exists, increment the maximum slno by 1
         new_slno = count[0] + 1
 
-    #insert the system to first create the two tables event and profile.
+
 
     # Insert the new profile into the database
     insert_query = "insert into profile(slno, name, phone, email_id) values (%s, %s, %s, %s)"
