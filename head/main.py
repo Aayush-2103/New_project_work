@@ -67,7 +67,7 @@ def control():
 
 
         elif option == '3':
-            print('Goodbye')
+            print('Thank you for using TO-DO_LIST! Have a great day ahead!😊')
             print()
             break
 
