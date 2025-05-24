@@ -111,3 +111,9 @@ def create_profile(con, cur):
     con.commit()
     print("Profile created successfully!")
 
+    print('Loading...')
+
+    # Send registration confirmation email
+    from create_profile.mail_on_register import send_registration_mail
+    send_registration_mail(email, name, new_slno)
+
