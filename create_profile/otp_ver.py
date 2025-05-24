@@ -29,14 +29,18 @@ def send_otp(name, email):
     formatted_expiry_time, expiry_time = calculate_expiry_time()
     # A unique footer to each email to avoid Gmail clipping
     unique_footer = f"\n\n---\nUnique OTP_ID: {random.randint(1000000000, 9999999999)}\n"
-    message = (
-        f"Hi {name},\n\n"
-        f"Your OTP to verify your email for TO-DO_LIST is {otp}.\n\n"
-        f"This OTP is valid till {formatted_expiry_time}.\n\n"
-        f"If you did not initiate this request, kindly ignore.\n\n"
-        f"Regards,\nTeam TO-DO_LIST"
-        f"{unique_footer}"
-    )
+    message = f"""Hi {name},
+
+Your OTP to verify your email for TO-DO_LIST is: {otp}.
+
+This OTP is valid for 10 mins till {formatted_expiry_time}.
+
+If you did not initiate this request, kindly ignore.
+
+Regards,
+Team TO-DO_LIST
+{unique_footer}
+"""
 
     sender_email = "aayushtalukdar@gmail.com"
     sender_password = "jage ssmf vnig ccib"
