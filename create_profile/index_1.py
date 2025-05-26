@@ -3,31 +3,7 @@ from create_profile.otp_ver import send_otp, validate_otp, resend_otp
 
 
 # Function to create a user profile
-def create_profile(con, cur):
-
-
-    #system to create the two tables "profile" and "events":
-    #creating table profile
-    cur.execute('''
-                create table if not exists profile(
-                SLNO int primary key,
-                NAME varchar(48),
-                PHONE char(10) unique,
-                EMAIL_ID varchar(100) unique
-                )''')
-
-    #creating table events
-    cur.execute('''
-                create table if not exists events(
-                SLNO int not null,
-                TASK_NAME varchar(40),
-                DATE_AND_TIME datetime,
-                NOTE varchar(500) default "--",
-                ALERT_TIME time
-                )''')
-
-    con.commit()
-    
+def create_profile(con, cur):    
     # Name validation
     while True:
         name = input("Enter your name: ").strip()
