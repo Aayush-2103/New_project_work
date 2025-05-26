@@ -19,7 +19,7 @@ def make_schedule(con, cur, uid):
         if note == '':
             note = '--'
             
-        alert = int(input('Alert time(in mins):- '))
+        alert = str(input('Alert time(in HH:MM:SS format):- '))
 
         #getting the count of events by that user
         query = 'select count(*) from events where slno like %s'
@@ -43,7 +43,7 @@ def make_schedule(con, cur, uid):
 
         insert_query = """
             INSERT INTO events (slno, task_name, date_and_time, note, alert_time)
-            VALUES (%s, %s, %s, %s, %s)
+            VALUES (%s, %s, %s, %s, "%s")
         """
         cur.execute(insert_query, (slno, task_name, dt, note, alert_time))
         con.commit()
