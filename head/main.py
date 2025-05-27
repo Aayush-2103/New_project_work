@@ -2,14 +2,13 @@
 
 def control():
     import mysql.connector as mysql
-    import os, sys
+    import os, sys, subprocess
     base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     sys.path.append(base_dir)
 
     import login.main
     import schedules.main, schedules.view_schedules, schedules.edit_schedules, create_profile.index_1
     import tools.connection
-    import notification.main
     
     #connection object
     con = mysql.connect(
@@ -63,6 +62,7 @@ def control():
                 #login function call
                 response, uid = login.main.lets_log_in(cur)
                 if response:
+                    subprocess.Popen(["start", "cmd", "/k", "python notification/main.py", str(uid)], shell=True)
                     while True:
                         #if login successfull then further ask the user for more options
                         print(f'1. Create new schedule')
@@ -76,6 +76,7 @@ def control():
                             schedules.main.make_schedule(con, cur, uid)
                             print()
                             print('Schedule create successfully')
+                            print()
 
                         elif option == '2':
                             schedules.view_schedules.view(cur, uid)
