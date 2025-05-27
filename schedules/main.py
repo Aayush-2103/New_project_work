@@ -26,24 +26,8 @@ def make_schedule(con, cur, uid):
         cur.execute(query, ('%' + str(uid) + '%',))
         data = cur.fetchone()
         num = data[0] + 1
+        slno = str(uid)+'_'+str(num)
 
-        # Fix SLNO to be int, or change table to accept varchar if you want to use uid_num
-        slno = int(str(uid) + str(num))  # Or just use num or uid as int
-
-        # Parse date_time to correct format
-        from datetime import datetime, time
-        try:
-            dt = datetime.strptime(date_time, "%Y-%m-%d %H:%M")
-        except ValueError:
-            print("Invalid date format. Please use yyyy-mm-dd HH:MM")
-            return
-
-        # Convert alert (minutes) to time object
-        alert_time = time(hour=alert // 60, minute=alert % 60)
-
-        insert_query = """
-            INSERT INTO events (slno, task_name, date_and_time, note, alert_time)
-            VALUES (%s, %s, %s, %s, "%s")
-        """
-        cur.execute(insert_query, (slno, task_name, dt, note, alert_time))
+        insert_query = "INSERT INTO events VALUES ('%s', '%s', '%s', '%s', '%s')"%(slno, task_name, date_time, note, alert)
+        cur.execute(insert_query)
         con.commit()
