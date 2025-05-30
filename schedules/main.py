@@ -6,6 +6,7 @@ def make_schedule(con, cur, uid):
     sys.path.append(base_dir)
 
     from tools import exists
+    from datetime import timedelta
     
     print()
     if exists.profile_exists(cur, uid):
@@ -19,31 +20,37 @@ def make_schedule(con, cur, uid):
         if note == '':
             note = '--'
             
-        alert = int(input('Alert time(in mins):- '))
+        alert = str(input('Alert time(in HH:MM format):- '))
 
         #getting the count of events by that user
         query = 'select count(*) from events where slno like %s'
         cur.execute(query, ('%' + str(uid) + '%',))
         data = cur.fetchone()
         num = data[0] + 1
+        slno = str(uid)+'_'+str(num)
 
-        # Fix SLNO to be int, or change table to accept varchar if you want to use uid_num
-        slno = int(str(uid) + str(num))  # Or just use num or uid as int
-
-        # Parse date_time to correct format
-        from datetime import datetime, time
         try:
-            dt = datetime.strptime(date_time, "%Y-%m-%d %H:%M")
-        except ValueError:
-            print("Invalid date format. Please use yyyy-mm-dd HH:MM")
-            return
+            insert_query = "INSERT INTO events VALUES (%s, %s, %s, %s, %s, default)"
+            cur.execute(insert_query, (slno, task_name, date_time, note, alert))
+            con.commit()
 
-        # Convert alert (minutes) to time object
-        alert_time = time(hour=alert // 60, minute=alert % 60)
+            #retrieve date_and_time and alert_time
+            query = "select * from events where slno = '%s'"%(slno)
+            cur.execute(query)
+            data = cur.fetchone()
+            date_and_time = data[2]
+            time_split = alert.split(':')
+            hrs = int(time_split[0])
+            mins = int(time_split[1])
 
-        insert_query = """
-            INSERT INTO events (slno, task_name, date_and_time, note, alert_time)
-            VALUES (%s, %s, %s, %s, %s)
-        """
-        cur.execute(insert_query, (slno, task_name, dt, note, alert_time))
-        con.commit()
+            notify_time = date_and_time - timedelta(hours=hrs, minutes=mins)
+            notify_time.strftime('%Y-%m-%d %H:%M')
+
+            query = "update events set notify_time = '%s' where slno = '%s'"%(notify_time, slno)
+            cur.execute(query)
+            con.commit()
+            
+        except:
+            print()
+            print('Please check the input format once again and try again.')
+            return make_schedule(con, cur, uid)
