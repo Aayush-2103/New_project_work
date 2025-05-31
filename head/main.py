@@ -42,7 +42,8 @@ def control():
                     print(f'1. Create new schedule')
                     print(f'2. View all schedules')
                     print(f'3. Edit schedule')
-                    print(f'4. Logout')
+                    print(f'4. Delete upcoming schedule')
+                    print(f'5. Logout')
                     print()
 
                     option = input('Enter your choice:- ')
@@ -57,8 +58,12 @@ def control():
 
                     elif option == '3':
                         schedules.edit_schedules.make_edits(con, cur, uid)
-
+                    
                     elif option == '4':
+                        schedules.delete_upcoming_events.delete_events(cur, uid)
+                        print()
+
+                    elif option == '5':
                         print()
                         break
 

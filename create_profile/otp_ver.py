@@ -31,11 +31,11 @@ def send_otp(name, email):
     unique_footer = f"\n\n---\nUnique OTP_ID: {random.randint(1000000000, 9999999999)}\n"
     message = f"""Hi {name},
 
-Your OTP to verify your email for TO-DO_LIST is: {otp}.
+Your OTP to verify your email for TO-DO_LIST is: {otp}
 
 This OTP is valid for 10 mins till {formatted_expiry_time}.
 
-If you did not initiate this request, kindly ignore.
+If you didn't request this OTP, kindly ignore.
 
 Regards,
 Team TO-DO_LIST
