@@ -7,7 +7,7 @@ def control():
     sys.path.append(base_dir)
 
     import login.main
-    import schedules.main, schedules.view_schedules, schedules.edit_schedules, create_profile.index_1
+    import schedules.main, schedules.delete_upcoming_events, schedules.view_schedules, schedules.edit_schedules, create_profile.index_1
     
     #connection object
     con = mysql.connect(
@@ -20,6 +20,29 @@ def control():
     cur = con.cursor()
     cur.execute("create database if not exists userpf")
     cur.execute("Use userpf")
+
+    #system to create the two tables "profile" and "events":
+    #creating table profile
+    cur.execute('''
+                create table if not exists profile(
+                SLNO int primary key,
+                NAME varchar(48),
+                PHONE char(10) unique,
+                EMAIL_ID varchar(100) unique
+                )''')
+
+    #creating table events
+    cur.execute('''
+                create table if not exists events(
+                SLNO varchar(100) primary key,
+                TASK_NAME varchar(40),
+                DATE_AND_TIME datetime,
+                NOTE varchar(500) default "--",
+                ALERT_TIME time,
+                notify_time datetime
+                )''')
+
+    con.commit()
 
     while True:
         print(f'Welcome\n')
