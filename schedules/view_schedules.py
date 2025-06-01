@@ -1,4 +1,4 @@
-#feature to let the user see all his past and futurere schedules
+#feature to let the user see all his past and future schedules
 
 def view(cur, uid):
     query = 'select * from events where SlNo like "%s"'%('%'+str(uid)+'%')
