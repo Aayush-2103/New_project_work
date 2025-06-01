@@ -9,7 +9,12 @@ def lets_log_in(cur):
     from tools.Mail import main
 
     print()
-    uid = int(input('Enter unique id:- '))
+    try:
+        uid = int(input('Enter Unique ID:- '))
+    except:
+        print('❌ Invalid input! Please enter a valid number.')
+        return False, False
+
     print()
     if exists.profile_exists(cur, uid):
         #get the profile data to send mails
@@ -21,7 +26,7 @@ def lets_log_in(cur):
         response = main.mail(name, phone, mail, count)
         if response:
             #log in successfull
-            print('Log in successfull.')
+            print('✅ Login successful!')
             print()
             return True, uid
             
@@ -30,6 +35,6 @@ def lets_log_in(cur):
             return False, False
 
     else:
-        print(f'User id:{uid} is not recognised.') 
+        print(f'❌ User id:{uid} is not recognised.') 
         print()
         return False, False

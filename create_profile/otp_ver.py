@@ -70,13 +70,13 @@ Team TO-DO_LIST
 
         # Increment resend count
         remaining_attempts = 3 - otp_data[email]["resend_count"]
-        print(f"An OTP has been sent to your entered email address. Your OTP is valid till {formatted_expiry_time}.")
-        print(f"You can resend the OTP {remaining_attempts} more time(s).")
+        print(f"📧 An OTP has been sent to your entered email address. Your OTP is valid till {formatted_expiry_time}.")
+        print(f"🔄 You can resend the OTP {remaining_attempts} more time(s).")
         return otp
     
         
     except Exception:
-        print("Failed to send OTP. Please enter a valid email address and try again later!")
+        print("❌ Failed to send OTP. Please enter a valid email address and try again later!")
         return None
 
 
@@ -84,7 +84,7 @@ Team TO-DO_LIST
 # Function to validate OTP  
 def validate_otp(email, user_otp):
     if email not in otp_data:
-        print("No OTP found for this email. Please request a new OTP.")
+        print("❌ No OTP found for this email. Please request a new OTP.")
         return False
 
     details = otp_data[email]
@@ -92,7 +92,7 @@ def validate_otp(email, user_otp):
     now = datetime.now(tz)
 
     if now > details["expires_at"]:
-        print("OTP has expired. Please request a new OTP.")
+        print("⌛ OTP has expired. Please request a new OTP.")
         return False
 
     if str(details["otp"]) != str(user_otp):
@@ -106,9 +106,9 @@ def validate_otp(email, user_otp):
 # Function to resend OTP
 def resend_otp(name, email):
     if email in otp_data and otp_data[email]["resend_count"] >= 3:
-        print("You have reached the maximum OTP resend limit.")
+        print("🚫 You have reached the maximum OTP resend limit.")
         return None
 
     otp_data[email]["resend_count"] += 1
-    print("Resending OTP...")
+    print("🔄 Resending OTP...")
     return send_otp(name, email)

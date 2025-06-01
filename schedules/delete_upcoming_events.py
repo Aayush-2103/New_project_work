@@ -13,10 +13,10 @@ def delete_events(cur, uid):
     upcoming_events = cur.fetchall()
 
     if not upcoming_events:
-        print("No upcoming events to delete.")
+        print("📭 No upcoming events to delete.")
         return
 
-    print("Your upcoming events:")
+    print("📅 Your upcoming events:")
     i = 0
     while i < len(upcoming_events):
         event = upcoming_events[i]
@@ -26,11 +26,11 @@ def delete_events(cur, uid):
     try:
         num = int(input("Enter the number of the event to delete (0 to cancel): "))
     except:
-        print("Invalid input! Please enter a number.")
+        print("❌ Invalid input! Please enter a number.")
         return
 
     if num == 0:
-        print("Deletion Cancelled!")
+        print("❌ Deletion Cancelled!")
         return
 
     if 1 <= num <= len(upcoming_events):
@@ -38,7 +38,7 @@ def delete_events(cur, uid):
         del_date = upcoming_events[num-1][2]
         del_query = "DELETE FROM events WHERE SLNO = %s AND DATE_AND_TIME = %s"
         cur.execute(del_query, (del_slno, del_date))
-        print("Event deleted successfully!")
+        print("🗑️ Event deleted successfully!")
     else:
-        print("Invalid choice! Please enter a valid number.")
+        print("⚠️ Invalid choice! Please enter a valid number.")
         return
