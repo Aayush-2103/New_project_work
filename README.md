@@ -1,10 +1,9 @@
-# PlanBee
 <h1>
   🐝📝 PlanBee: Your Smart Scheduling Companion
 </h1>
 
 <h2>
-  Description
+ 📋 Description
 </h2>
 <p>
   <b>PlanBee</b> is a modern, user-friendly Python application designed to streamline scheduling and reminders for busy individuals and teams. With its intuitive interface, PlanBee manages your daily events, automates reminders, and keeps your schedule organized and accessible. Users can create, view, edit, and delete events, receive timely email notifications, and maintain a comprehensive record of their activities.
@@ -13,7 +12,7 @@
 </p>
 
 <h2>
-  Key Features:
+  🎯 Key Features
 </h2>
 <p>
 📅 Effortless Event Scheduling<br>
@@ -21,6 +20,7 @@
 🔑 Secure OTP-Based Login & Registration<br>
 🗂️ Comprehensive Event & Profile Database<br>
 📝 Easy Editing & Deletion of Events<br>
+🗃 Neat Database Management using MySQL<br>
 📊 Real-Time Overview of Schedules<br>
 🖥️ Clean, Emoji-Enhanced Command-Line Interface<br>
 🔒 Robust Exception Handling & Data Security<br>
@@ -52,10 +52,11 @@
 </p>
 
 <h2>
-  Learning Outcomes 📚
+  📚 Learning Outcomes 
 </h2>
 <p>
   🔄 Scalable use of user-defined functions<br>
+  🔗 MySQL and Python Integrity<br>
   ⚙️ Importance of modular programming in large projects<br>
   🤝 Collaboration using GitHub, Git Bash, and VS Code<br>
   📊 Practical use of data structures and types<br>
@@ -64,7 +65,7 @@
 </p>
 
 <h2>
-  How to Use? 🤔
+  🤔 How to Use? 
 </h2>
 <p>
 <ol>
@@ -79,6 +80,13 @@
   </li>
   <li>Follow the on-screen instructions to register, log in, and manage your schedules.</li>
 </ol>
+</p>
+
+<h2>
+  ⚠ NOTE‼
+</h2>
+<p>
+  <b>A CMD window opens after you log in to PlanBee using your Unique ID. DO NOT CLOSE that window as it is important for the email handling part. Minimise the CMD window and let it run in the background and continue your work.<br>
 </p>
 
 <h2>
