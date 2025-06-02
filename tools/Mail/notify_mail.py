@@ -9,22 +9,23 @@ def notification_mail(task_name, date_time, note, name, receiver):
     msg = EmailMessage()
 
     message = f'''
-Hello {name}
+Hello {name},
 
-This is a gentle reminder for your upcoming task: {task_name}.
+This is a gentle reminder from PlanBee about your upcoming task:
 
-🗓 Scheduled Date & Time: {date_time}
-📝 Note: {note} 
+🗓 Task: {task_name}  
+📅 Scheduled Date & Time: {date_time}  
+📝 Note: {note}
 
-We hope this reminder helps you stay on track. Feel free to reach out if you need any assistance managing your tasks.
+We hope this helps you stay organized and on track. Feel free to reach out if you need any assistance managing your tasks.
 
 Thank you
-Best regards,
-Your To-Do App Team
+Best regards,  
+The PlanBee Team
 '''
     
     msg.set_content(message)
-    msg['Subject'] = f'⏰ Reminder: Upcoming Task - {task_name}'
+    msg['Subject'] = f'⏰ PlanBee Reminder: Upcoming Task - {task_name}'
     msg['From'] = sender_mail
     msg['To'] = receiver
 

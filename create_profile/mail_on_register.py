@@ -1,18 +1,20 @@
 import smtplib
 
 def send_registration_mail(email, name, slno):
-    subject = "Welcome to TO-DO_LIST - Registration Successful"
-    message = f"""Hi {name},
+    subject = "Welcome to PlanBee – Registration Successful"
+    message = f"""
+Hello {name},
 
-Thank you for registering with TO-DO_LIST.
-Your profile has been created successfully!
+Thank you for registering with PlanBee!
+Your profile has been created successfully.
 
-Here is your unique ID: {slno}
+Your PlanBee Unique ID: {slno}
 
-You can use this unique ID to log in and add your schedules.
+You can use this ID to log in and start adding your schedules.
 
-Regards,
-Team TO-DO_LIST
+
+Best regards,  
+The PlanBee Team
 """
     sender_email = "aayushtalukdar@gmail.com"
     sender_password = "jage ssmf vnig ccib"
