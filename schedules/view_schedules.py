@@ -13,4 +13,4 @@ def view(cur, uid):
             print(str(i+1)+')', data[i][0], '|', data[i][1], '|', data[i][2], '|', data[i][3],'|',data[i][4], '|', data[i][5])
 
     else:
-        print('No events to display')
+        print('📭 No events to display')

@@ -22,6 +22,6 @@ Team TO-DO_LIST
             server.starttls()
             server.login(sender_email, sender_password)
             server.sendmail(sender_email, email, f"Subject: {subject}\n\n{message}")
-        print("Your Unique ID to log-in in TO-DO_LIST has been sent to your email address!")
+        print("📧 Your Unique ID to log-in in TO-DO_LIST has been sent to your email address!")
     except Exception:
-        print("Failed to send registration confirmation email. Please try again later!")
+        print("❌ Failed to send registration confirmation email. Please try again later!")

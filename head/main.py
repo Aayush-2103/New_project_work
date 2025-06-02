@@ -48,10 +48,10 @@ def control():
     if tools.connection.is_connected():
 
         while True:
-            print(f'Welcome\n')
-            print(f'1. Create Profile')
-            print(f'2. Login')
-            print(f'3. Exit')
+            print(f'👋 Welcome\n')
+            print(f'🆕 1. Create Profile')
+            print(f'🔑 2. Login')
+            print(f'❌ 3. Exit')
 
             print()
             option = input('Enter your choice:- ')        
@@ -66,18 +66,18 @@ def control():
                     notify_mech = subprocess.Popen(["start", "cmd", "/k","python notification/main.py", str(uid)], shell=True)
                     while True:
                         #if login successfull then further ask the user for more options
-                        print(f'1. Create new schedule')
-                        print(f'2. View all schedules')
-                        print(f'3. Edit schedule')
-                        print(f'4. Delete upcoming schedule')
-                        print(f'5. Logout')
+                        print(f'📝 1. Create new schedule')
+                        print(f'📅 2. View all schedules')
+                        print(f'✏️ 3. Edit schedule')
+                        print(f'🗑️ 4. Delete upcoming schedule')
+                        print(f'🚪 5. Logout')
                         print()
 
                         option = input('Enter your choice:- ')
                         if option == '1':
                             schedules.main.make_schedule(con, cur, uid)
                             print()
-                            print('Schedule create successfully')
+                            print('✅ Schedule created successfully! 🎉')
                             print()
 
                         elif option == '2':
@@ -92,7 +92,7 @@ def control():
                             print()
 
                         elif option == '5':
-                            print()
+                            print('👋 Logging out...')
                             for process in psutil.process_iter(['pid', 'name', 'cmdline']):
                                 if 'python' in process.info['name'] and 'notification/main.py' in str(process.info['cmdline']):
                                     process.kill()
@@ -101,20 +101,20 @@ def control():
                             break
 
                         else:
-                            print('Select from the given options')
+                            print('⚠️ Select from the given options')
 
 
             elif option == '3':
-                print('Thank you for using TO-DO_LIST! Have a great day ahead! 😀')
+                print('🙏 Thank you for using TO-DO_LIST! Have a great day ahead! 😀')
                 print()
                 break
 
             else:
-                print('Select from the given options.')
+                print('⚠️ Select from the given options.')
                 print()
 
     else:
-        print('Please make sure your device is connected to INTERNET.')
+        print('🌐 Please make sure your device is connected to INTERNET.')
         print()
 
 control()

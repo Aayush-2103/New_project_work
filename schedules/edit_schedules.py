@@ -5,7 +5,7 @@ def make_edits(con, cur, uid):
     from datetime import timedelta
 
     print()
-    print('Enter any part of the task name you remember.')
+    print('🔍 Enter any part of the task name you remember.')
     search = input()
     print()
 
@@ -42,7 +42,7 @@ def make_edits(con, cur, uid):
                     cur.execute(query)
                     con.commit()
                     print()
-                    print('Updates saved successfully.')
+                    print('✅ Updates saved successfully.')
                     
                 elif choice == 2:
                     print('Date & time in (yyyy-mm-dd 17:45) format')
@@ -66,7 +66,7 @@ def make_edits(con, cur, uid):
                     con.commit()
 
                     print()
-                    print('Updates saved successfully.')
+                    print('✅ Updates saved successfully.')
                     
                 elif choice == 3:
                     print('NOTE (Optional):- ')
@@ -78,7 +78,7 @@ def make_edits(con, cur, uid):
                     cur.execute(query)
                     con.commit()
                     print()
-                    print('Updates saved successfully.')
+                    print('✅ Updates saved successfully.')
                     
                 elif choice == 4:
                     alert = (input('Alert time(in HH:MM format):- '))
@@ -101,20 +101,20 @@ def make_edits(con, cur, uid):
                     con.commit()
 
                     print()
-                    print('Updates saved successfully.')
+                    print('✅ Updates saved successfully.')
 
                 elif choice == 5:
                     break
 
                 else:
-                    print('Please select from the option given.')
+                    print('⚠️ Please select from the option given.')
 
                 print()
 
         else:
-            print('Invalid option number.')
-            print('Process Terminated !!!')
+            print('❌ Invalid option number.')
+            print('❌ Process Terminated !!!')
             print()
 
     else:
-        print('No records to edit.')
+        print('⚠️ No records to edit.')

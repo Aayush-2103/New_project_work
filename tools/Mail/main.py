@@ -14,7 +14,7 @@ def mail(name, phone, receiver, count):
         #generate otp
         otp = random.randint(100000, 999999)
 
-        print('loading...')
+        print('⏳ Loading...')
 
         #sending the mail
         otp_mail.otp_login(name, phone, receiver, otp)
@@ -23,15 +23,15 @@ def mail(name, phone, receiver, count):
 
         #user input for otp
         print()
-        print(f'OTP sent to the registered mail id: {receiver}')        
-        print(f'Your OTP is valid till {time}')
-        print(f'You can resend the otp more {3-count} times by entering "resend".')
+        print(f'📧 OTP sent to the registered mail id: {receiver}')        
+        print(f'⏰ Your OTP is valid till {time}')
+        print(f'🔄 You can resend the otp more {3-count} times by entering "resend".')
         user = input('Enter otp: ')
         print()
 
         current = datetime.now().strftime('%H:%M, %d %B, %Y')
         if current > time:
-            print('OTP Expired !!!')
+            print('⌛ OTP Expired !!!')
             return False
 
         if user.lower() == 'resend':
@@ -40,16 +40,16 @@ def mail(name, phone, receiver, count):
                 return mail(name, phone, receiver, count)
             
             else:
-                print('No more chances for now.')
+                print('🚫 No more chances for now.')
                 return False
 
         elif user == str(otp):
             return True
         
         elif user != str(otp):
-            print('Invalid OTP !!!')
+            print('❌ Invalid OTP !!!')
             return False
 
     else:
-        print(f'Please ensure your device is connected with an active internet connection.')
+        print(f'🌐 Please ensure your device is connected with an active internet connection.')
         return False

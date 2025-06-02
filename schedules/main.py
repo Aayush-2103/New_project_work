@@ -12,15 +12,15 @@ def make_schedule(con, cur, uid):
     if exists.profile_exists(cur, uid):
         task_name = input('Task name:- ')
 
-        print('Date & time in (yyyy-mm-dd 17:45) format')
+        print('📅 Date & time in (yyyy-mm-dd 17:45) format')
         date_time = input()
 
-        print('NOTE (Optional):- ')
+        print('📝 NOTE (Optional):- ')
         note = input()
         if note == '':
             note = '--'
             
-        alert = str(input('Alert time(in HH:MM format):- '))
+        alert = str(input('⏰ Alert time(in HH:MM format):- '))
 
         #getting the count of events by that user
         query = 'select count(*) from events where slno like %s'
@@ -52,5 +52,5 @@ def make_schedule(con, cur, uid):
             
         except:
             print()
-            print('Please check the input format once again and try again.')
+            print('⚠️ Please check the input format once again and try again.')
             return make_schedule(con, cur, uid)
