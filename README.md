@@ -82,61 +82,6 @@
 </p>
 
 <h2>
-  🗂️ Project Structure
-</h2>
-<pre>
-New_project_work/
-│
-├── head/
-│   └── main.py                <i>Main control flow, menus, and user session management</i>
-│
-├── create_profile/
-│   ├── index_1.py             <i>User registration, validation, and OTP handling</i>
-│   ├── mail_on_register.py    <i>Sends registration confirmation emails</i>
-│   └── otp_ver.py             <i>OTP generation, validation, and resend logic</i>
-│
-├── login/
-│   └── main.py                <i>User login and authentication</i>
-│
-├── schedules/
-│   ├── main.py                <i>Create new schedules/events</i>
-│   ├── view_schedules.py      <i>View all scheduled events</i>
-│   ├── edit_schedules.py      <i>Edit existing events</i>
-│   └── delete_upcoming_events.py <i>Delete future events</i>
-│
-├── tools/
-│   ├── connection.py          <i>Database connection utilities</i>
-│   ├── exists.py              <i>Checks for existing users/events</i>
-│   ├── pull_data.py           <i>Fetches user/event data</i>
-│   └── Mail/
-│       ├── notify_mail.py     <i>Sends event reminder emails</i>
-│       ├── otp_mail.py        <i>Sends OTP emails</i>
-│       └── main.py            <i>Mail sending logic</i>
-│
-├── notification/
-│   └── main.py                <i>Handles background notification processes</i>
-│
-├── LICENSE                    <i>MIT License</i>
-└── README.md                  <i>This file</i>
-</pre>
-
-<h2>
-  📝 Example CLI Output
-</h2>
-<pre>
-============================================================
-                🐝📝  Welcome to PlanBee  🐝📝
-                Your Smart Scheduling Companion
-============================================================
-
-🆕 1. Create Profile
-🔑 2. Login
-❌ 3. Exit
-
-Please enter your choice: 
-</pre>
-
-<h2>
   📦 Requirements
 </h2>
 <ul>
