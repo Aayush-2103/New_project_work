@@ -50,7 +50,7 @@ def control():
         while True:
             print(f"\n" + "="*60)
             print(f" " * 15 + "🐝📝  Welcome to PlanBee  🐝📝")
-            print(f" " * 15 + "Your Smart Scheduling Companion")
+            print(f" " * 14 + "~Your Smart Scheduling Companion~")
             print(f"="*60)
             print()
             print(f"🆕 1. Create Profile")
