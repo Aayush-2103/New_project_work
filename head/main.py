@@ -48,11 +48,14 @@ def control():
     if tools.connection.is_connected():
 
         while True:
-            print(f'👋 Welcome\n')
-            print(f'🆕 1. Create Profile')
-            print(f'🔑 2. Login')
-            print(f'❌ 3. Exit')
-
+            print(f"\n" + "="*60)
+            print(f" " * 15 + "🐝📝  Welcome to PlanBee  🐝📝")
+            print(f" " * 14 + "~Your Smart Scheduling Companion~")
+            print(f"="*60)
+            print()
+            print(f"🆕 1. Create Profile")
+            print(f"🔑 2. Login")
+            print(f"❌ 3. Exit")
             print()
             option = input('Enter your choice:- ')        
             if option == '1':
@@ -92,7 +95,7 @@ def control():
                             print()
 
                         elif option == '5':
-                            print('👋 Logging out...')
+                            print('👋 Logging out... See you soon! 😊')
                             for process in psutil.process_iter(['pid', 'name', 'cmdline']):
                                 if 'python' in process.info['name'] and 'notification/main.py' in str(process.info['cmdline']):
                                     process.kill()
@@ -105,7 +108,7 @@ def control():
 
 
             elif option == '3':
-                print('🙏 Thank you for using TO-DO_LIST! Have a great day ahead! 😀')
+                print("🙏 Thank you for using PlanBee! Have a productive day! 😀")
                 print()
                 break
 
@@ -114,7 +117,7 @@ def control():
                 print()
 
     else:
-        print('🌐 Please make sure your device is connected to INTERNET.')
+        print('🌐 Please make sure your device is connected to the internet.')
         print()
 
 control()

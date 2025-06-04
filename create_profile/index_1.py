@@ -8,11 +8,11 @@ def create_profile(con, cur):
     while True:
         name = input("Enter your name: ").strip()
         if not name:
-            print("❗ Name cannot be empty. Please enter a valid name.")
+            print("❗ Name cannot be empty. Please enter your name.")
         elif not all(char.isalpha() or char.isspace() for char in name):
-            print("❗ Name can only contain alphabets and spaces. Please try again.")
+            print("❗ Name can only contain letters and spaces. Please try again.")
         elif len(name) > 50:
-            print("❗ Name is too long. Please enter a name with fewer than 50 characters.")
+            print("❗ Name is too long. Please use fewer than 50 characters.")
         else:
             break
 
@@ -22,16 +22,16 @@ def create_profile(con, cur):
     while True:
         phone = input("Enter your phone number: ").strip()
         if not phone.isdigit():
-            print("❗ Phone number should contain only digits. Please try again.")
+            print("❗ Phone number should contain only digits.")
         elif len(phone) != 10:
-            print("❗ Phone number should be exactly 10 digits. Please try again.")
+            print("❗ Phone number must be exactly 10 digits.")
         else:
             # Check if the phone number already exists in the database
             query = "SELECT phone FROM profile WHERE phone = %s"
             cur.execute(query, (phone,))
             result = cur.fetchone()
             if result:
-                print("⚠️ This phone number already exists, try again using another number!")
+                print("⚠️ This phone number is already registered. Please use another number.")
             else:
                 break
 
@@ -45,7 +45,7 @@ def create_profile(con, cur):
         else:
             break
 
-    print('⏳ Loading...')
+    print('⏳ Sending OTP to your email address...')
     otp = send_otp(name, email)
     if otp is None:
         return
@@ -64,7 +64,7 @@ def create_profile(con, cur):
         if validate_otp(email, user_otp):
             break
 
-        print("❌ Invalid or expired OTP! Please retry.")
+        print("❌ Invalid or expired OTP! Please try again.")
         return
 
 
@@ -92,4 +92,6 @@ def create_profile(con, cur):
     # Send registration confirmation email
     from create_profile.mail_on_register import send_registration_mail
     send_registration_mail(email, name, new_slno)
+
+    print("📧 Registration confirmation sent to your email address!")
 

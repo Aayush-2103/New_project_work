@@ -107,7 +107,7 @@ def make_edits(con, cur, uid):
                     break
 
                 else:
-                    print('⚠️ Please select from the option given.')
+                    print('⚠️ Please select a valid option.')
 
                 print()
 
@@ -117,4 +117,4 @@ def make_edits(con, cur, uid):
             print()
 
     else:
-        print('⚠️ No records to edit.')
+        print('⚠️ No records found to edit.')

@@ -25,20 +25,21 @@ def calculate_expiry_time():
 # Function to send OTP
 def send_otp(name, email):
     otp = random.randint(100000, 999999)
-    subject = "One Time Password (OTP) for your TO-DO_LIST profile"
+    subject = "One-Time Password (OTP) for your PlanBee profile"
     formatted_expiry_time, expiry_time = calculate_expiry_time()
     # A unique footer to each email to avoid Gmail clipping
     unique_footer = f"\n\n---\nUnique OTP_ID: {random.randint(1000000000, 9999999999)}\n"
-    message = f"""Hi {name},
+    message = f"""
+Hello {name},
 
-Your OTP to verify your email for TO-DO_LIST is: {otp}
+Your One-Time Password (OTP) for verifying your email with PlanBee is: {otp}
 
-This OTP is valid for 10 mins till {formatted_expiry_time}.
+This OTP is valid for 10 minutes, until {formatted_expiry_time}.
 
-If you didn't request this OTP, kindly ignore.
+If you did not request this OTP, please ignore this email.
 
-Regards,
-Team TO-DO_LIST
+Best regards,  
+The PlanBee Team
 {unique_footer}
 """
 
@@ -70,13 +71,13 @@ Team TO-DO_LIST
 
         # Increment resend count
         remaining_attempts = 3 - otp_data[email]["resend_count"]
-        print(f"📧 An OTP has been sent to your entered email address. Your OTP is valid till {formatted_expiry_time}.")
+        print(f"📧 An OTP has been sent to your email. It is valid until {formatted_expiry_time}.")
         print(f"🔄 You can resend the OTP {remaining_attempts} more time(s).")
         return otp
     
         
     except Exception:
-        print("❌ Failed to send OTP. Please enter a valid email address and try again later!")
+        print("❌ Failed to send OTP. Please check your email address and try again!")
         return None
 
 

@@ -12,7 +12,7 @@ def lets_log_in(cur):
     try:
         uid = int(input('Enter Unique ID:- '))
     except:
-        print('❌ Invalid input! Please enter a valid number.')
+        print("❌ Invalid input! Please enter a valid number.")
         return False, False
 
     print()
@@ -26,7 +26,7 @@ def lets_log_in(cur):
         response = main.mail(name, phone, mail, count)
         if response:
             #log in successfull
-            print('✅ Login successful!')
+            print(f"✅ Login successful! Welcome back {name}!😃")
             print()
             return True, uid
             
@@ -35,6 +35,6 @@ def lets_log_in(cur):
             return False, False
 
     else:
-        print(f'❌ User id:{uid} is not recognised.') 
+        print(f"❌ User ID {uid} not recognized. Please try again.") 
         print()
         return False, False

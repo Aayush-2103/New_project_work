@@ -22,16 +22,17 @@ def otp_login(name, phone, receiver, otp):
     message = f'''
 Hello {name},
 
-Your One-Time Password (OTP) for logging into your account with registered phone number {phone} is:
+Your One-Time Password (OTP) for logging into your PlanBee account (registered phone: {phone}) is:
 
 🔐 OTP: {otp}
 
-This code is valid for the next 10 minutes till {time}.
+This code is valid for the next 10 minutes, until {time}.
 
-Please do not share it with anyone.
+Please do not share this code with anyone.
 If you did not request this login, please ignore this email.
 
-Thank you
+Best regards,  
+The PlanBee Team
                 '''
     
     msg.set_content(message)
