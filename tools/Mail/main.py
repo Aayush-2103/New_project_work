@@ -12,7 +12,11 @@ def mail(name, phone, receiver, count):
 
     if connection.is_connected():
         #generate otp
-        otp = random.randint(100000, 999999)
+        otp = ''
+        for i in range(6):
+            otp += str(random.randint(0,9))
+
+        otp = int(otp)
 
         print('⏳ Loading...')
 
